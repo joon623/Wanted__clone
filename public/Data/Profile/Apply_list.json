@@ -1,0 +1,13 @@
+{
+  "productList": [
+    {
+      "id": 1,
+      "company": "큐티인",
+      "position":"유튜브 비디오 컨텐츠",
+      "day": "2020.10.07",
+      "status": "접수",
+      "recommend":"대기중",
+      "reward": "신청"    
+    }
+  ]
+}

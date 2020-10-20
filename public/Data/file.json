@@ -1,0 +1,16 @@
+{
+  "file": [
+    {
+      "id": 1,
+      "image": "https://t1.daumcdn.net/friends/prod/product/20200708183424425_8809721502129_8809721502129_AW_00.jpg?type=thumb&opt=R255x255@2xa"
+    },
+    {
+      "id": 2,
+      "image": "https://t1.daumcdn.net/friends/prod/product/20190902155910225_8809656139841_8809656139841_AW_00.jpg?type=thumb&opt=R255x255@2xa"
+    },
+    {
+      "id": 3,
+      "image": "https://t1.daumcdn.net/friends/prod/product/FRPBRYHMD8001_AW_00.jpg?type=thumb&opt=R255x255@2xa"
+    }
+  ]
+}

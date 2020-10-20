@@ -1,0 +1,132 @@
+{
+  "recruitCompanyData": [
+    {
+      "id": 1,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 2,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 95,
+      "location": "서울"
+    },
+    {
+      "id": 3,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 4,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 5,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 6,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 95,
+      "location": "서울"
+    },
+    {
+      "id": 7,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 8,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 95,
+      "location": "서울"
+    },
+    {
+      "id": 9,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 10,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 95,
+      "location": "서울"
+    },
+    {
+      "id": 11,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 12,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 13,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 14,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    },
+    {
+      "id": 15,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 95,
+      "location": "서울"
+    },
+    {
+      "id": 16,
+      "thumbnail": "/Images/CompanyLists/company.jpeg",
+      "title": "프론트엔드 수강생",
+      "companyName": "위코드",
+      "response_rate": 90,
+      "location": "서울"
+    }
+  ]
+}

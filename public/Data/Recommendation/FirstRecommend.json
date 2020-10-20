@@ -1,0 +1,87 @@
+{
+    "RecommendData": [
+      {
+        "id": 1,
+        "pic": "http://localhost:3000/Images/Recommendation/내사진1.jpeg",
+        "name":"큐티호큐니"
+
+      },
+      {
+        "id": 2,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U017ES8NH9Q-f9ee51d0c824-512",
+        "name":"큐티연성"
+      },
+      {
+        "id": 3,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016RK14GAY-c9f6dea62f41-512",
+        "name":"큐티쭌"
+      },
+      {
+        "id": 4,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016KKVEZT5-7b5165b68a39-512",
+        "name":"큐티쭈히쨩"
+      },
+      {
+        "id": 5,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016CML0EJJ-eea0335ac951-512",
+        "name": "큐티성은"
+      },
+      {
+        "id": 6,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016J2M0CLV-f1ce46dc38c0-512",
+        "name":"큐티성호"
+      },
+      {
+        "id": 7,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U0164M9VC9M-9e456ae2e9be-512",
+        "name": "호뀨니"
+      }
+      ,
+      {
+        "id": 8,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016CMLK6JJ-ea34aff0a288-512",
+        "name": "은쓔"
+      }
+      ,
+      {
+        "id": 9,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016RK0TYA0-2becbd11080c-512",
+        "name": "갑빈"
+      }
+      ,
+      {
+        "id": 10,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016J19HE94-ee3b30836a1c-512",
+        "name": "쿠티독일"
+      }
+      ,
+      {
+        "id": 11,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016J2LB61K-6c41783d9cca-512",
+        "name": "상쭌"
+      }
+      ,
+      {
+        "id": 12,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U016Y2PKHC1-ab637d994ef4-512",
+        "name": "쿠티찌형"
+      }
+      ,
+      {
+        "id": 13,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U0164M9VC9M-9e456ae2e9be-512",
+        "name": "호뀨닝"
+      }
+      ,
+      {
+        "id": 14,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U0164M9VC9M-9e456ae2e9be-512",
+        "name": "호뀨닝"
+      },
+      {
+        "id": 15,
+        "pic": "https://ca.slack-edge.com/TH0U6FBTN-U0164M9VC9M-9e456ae2e9be-512",
+        "name": "호뀨닝"
+      }
+    ]
+  }

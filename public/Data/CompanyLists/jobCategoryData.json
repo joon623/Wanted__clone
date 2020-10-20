@@ -1,0 +1,94 @@
+{
+  "jobCategoryData": [
+    {
+      "id": 1,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 2,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 3,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 4,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 5,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 6,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 7,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 8,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 9,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 10,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 11,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 12,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 13,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 14,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    },
+    {
+      "id": 15,
+      "category": "서버개발자",
+      "img": "/Images/CompanyLists/company.jpeg",
+      "alt": "서버개발자"
+    }
+  ]
+}
