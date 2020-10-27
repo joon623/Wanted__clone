@@ -78,18 +78,17 @@ export default function NavTagBar({
 }
 
 const TagNavigation = styled.div`
-  display: ${(props) => (props.displayRecommend ? 'block' : 'none')};
-  position: absolute;
+  display: ${({ displayRecommend }) => (displayRecommend ? 'block' : 'none')};
+  position: fixed;
   top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  width: 100%;
-  height: 200vh;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 11;
 `;
 
 const TagContainer = styled.div`
-  width: 100%;
   margin: 0 auto;
   padding-top: 5px;
   background-color: white;
@@ -137,7 +136,6 @@ const SearchInput = styled.input`
 `;
 
 const RecommendTag = styled.div`
-  width: 100%;
   margin-top: 40px;
 `;
 
@@ -168,8 +166,8 @@ const RecommendedTag = styled.ul`
 `;
 
 const RecommendList = styled.li`
-  height: 50px;
   display: inline-block;
+  height: 50px;
   line-height: 50px;
   margin-right: 15px;
   margin-bottom: 35px;

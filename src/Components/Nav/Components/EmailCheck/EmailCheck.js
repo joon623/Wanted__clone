@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import KaKaoLogin from 'react-kakao-login';
 import { useSelector, useDispatch } from 'react-redux';
-import { NeedLogin, ExitLogin } from '../../../../Store/Actions/index';
+import { ExitLogin } from '../../../../Store/Actions/index';
 
 export default function EmailCheck({
   floatSignUp,
@@ -10,7 +10,6 @@ export default function EmailCheck({
   handleEmail,
   checkEmail,
   emailValidation,
-  kakaoData,
   responseFail,
   responseKakao,
 }) {
