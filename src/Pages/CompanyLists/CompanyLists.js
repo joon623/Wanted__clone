@@ -6,7 +6,6 @@ import BookMark from './Components/BookMark';
 import ActiveRecruitment from './Components/ActiveRecruitment';
 import RecruitCompanyLists from './Components/RecruitCompanyLists';
 import styled from 'styled-components';
-import Nav from '../../Components/Nav/Nav';
 import ComapnySlide from '../CompanyLists/Components/CompanySlide';
 import { API } from '../../config';
 
@@ -28,7 +27,7 @@ function CompanyLists() {
   };
 
   const changeLocationfilter = () => {
-    if (locationId == 1) {
+    if (locationId === 1) {
       setLocationFilterAddress(`${API}/recruit/`);
     } else {
       setLocationFilterAddress(
@@ -42,7 +41,6 @@ function CompanyLists() {
 
   return (
     <>
-      <Nav />
       <ComapnySlide />
       <MainSlide />
       <Container>
@@ -82,8 +80,8 @@ function CompanyLists() {
 export default CompanyLists;
 
 const Container = styled.div`
-  width: 1050px;
+  width: 1060px;
   height: 800px;
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 20px 0px 80px;
 `;

@@ -1,26 +1,10 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import {
-  NeedLogin,
-  ExitLogin,
-  OpenResumeManagement,
-  CloseResumeManagement,
-  OpenResumeWriting,
-  CloseResumeWriting,
-  ResumeState,
-} from '../../../Store/Actions/index';
+import { NeedLogin, ResumeState } from '../../../Store/Actions/index';
 
-function ResumeIntro({
-  displayResumeManagement,
-  setDisplayResumeManagement,
-  displayWritingResume,
-  setDisplayWritingResume,
-  handleWritingButton,
-}) {
+function ResumeIntro() {
   const dispatch = useDispatch();
-  const isUserLogin = useSelector((store) => store.userLoggedReducer);
-  const displayResumeIntro = useSelector((store) => store.displayResumeIntro);
 
   const handleWhichButton = (page) => {
     dispatch(NeedLogin());
@@ -28,12 +12,7 @@ function ResumeIntro({
   };
 
   return (
-    <Intro
-      displayWritingResume={displayWritingResume}
-      displayResumeManagement={displayResumeManagement}
-      isUserLogin={isUserLogin}
-      displayResumeIntro={displayResumeIntro}
-    >
+    <Intro>
       <IntroHeader>
         <MainCopy>이력서 양식, 그 이상</MainCopy>
         <MainText>

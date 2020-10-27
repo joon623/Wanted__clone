@@ -11,11 +11,10 @@ import UserSelectBox from './Components/UserSelectBox/UserSelectBox';
 import { NAVIGATION_MENU_Tab } from './Data/NAVIGATION_MENU_TAB';
 import { NAVIGATION_ASIDE } from './Data/NAVIGATION_ASIDE';
 import { EXPLORE_CONTENT } from './Data/EXPLORE_CONTENT';
-import { SignUpAddress } from '../../config';
+import { API } from '../../config';
 import {
   UserLogin,
   UserLogOut,
-  NeedLogin,
   ExitLogin,
   ResumeState,
 } from '../../Store/Actions';
@@ -54,10 +53,8 @@ function Nav() {
   const history = useHistory();
   const SignUpValidationButton = useRef(null);
 
-  const [userLogged, setUserLogged] = useState(false);
   const dispatch = useDispatch();
   const isUserLogin = useSelector((store) => store.userLoggedReducer);
-  const UserclickedButton = useSelector((store) => store.clickedButton);
 
   const handleExplore = (idx) => {
     idx === 0 ? setDisplayExplore(true) : setDisplayExplore(false);
@@ -80,7 +77,7 @@ function Nav() {
       return setEmailValidation(false);
     }
 
-    await fetch(`${SignUpAddress}`, {
+    await fetch(`${API}/account/emailcheck`, {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -166,7 +163,7 @@ function Nav() {
     setSingnUpValidation(pwdCheckValid);
 
     SignUpValidationButton.current.addEventListener('click', async () => {
-      await fetch(`${SignUpAddress}/signup`, {
+      await fetch(`${API}/account/emailcheck/signup`, {
         method: 'POST',
         body: JSON.stringify({
           email,
@@ -195,7 +192,7 @@ function Nav() {
   };
 
   const checkLogin = async () => {
-    await fetch(`${SignUpAddress}/signin`, {
+    await fetch(`${API}/account/emailcheck/signin`, {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -216,7 +213,7 @@ function Nav() {
 
   const responseKakao = (res) => {
     if (res.response.access_token) {
-      fetch(`${SignUpAddress}/kakaosignin`, {
+      fetch(`${API}/account/emailcheck/kakaosignin`, {
         method: 'POST',
         headers: {
           Authorization: res.response.access_token,

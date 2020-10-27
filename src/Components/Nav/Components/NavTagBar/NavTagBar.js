@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import {
   SearchedData,
   RecruitList,
 } from '../../../../Store/Actions/index';
-import { SearchAddress } from '../../../../config';
+import { API } from '../../../../config';
 
 export default function NavTagBar({
   displayRecommend,
@@ -29,7 +29,7 @@ export default function NavTagBar({
   const submitValue = async (e) => {
     e.preventDefault();
     dispatch(UserSearchInput(searchValue));
-    await fetch(`${SearchAddress}${searchValue}`)
+    await fetch(`${API}/recruit/search?keyword=${searchValue}`)
       .then((res) => res.json())
       .then((result) => {
         dispatch(SearchedData());
@@ -51,17 +51,17 @@ export default function NavTagBar({
         <TagContent>
           <SearchBar onSubmit={(e) => submitValue(e)}>
             <SubmitButton onClick={submitValue}>
-              <i className='fas fa-search' />
+              <i className="fas fa-search" />
             </SubmitButton>
             <SearchInput
-              placeholder='#태그, 회사, 포지션 검색'
+              placeholder="#태그, 회사, 포지션 검색"
               onChange={handleSearchInput}
             />
           </SearchBar>
           <RecommendTag>
             <RecommendText>
               <div>추천태그로 검색해보세요</div>
-              <Link to='/'>
+              <Link to="/">
                 <div>기업태그 홈</div>
               </Link>
             </RecommendText>

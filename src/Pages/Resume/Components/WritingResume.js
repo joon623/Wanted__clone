@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { ResumeState } from '../../../Store/Actions/index';
 
@@ -12,24 +11,12 @@ function WritingResume({
   emailElement,
   phoneNumberElement,
   textareaElement,
-  displayWritingResume,
-  displayResumeManagement,
   newWritingData,
 }) {
-  const isUserLogin = useSelector((store) => store.userLoggedReducer);
-  const displayWritingReducer = useSelector(
-    (store) => store.displayResumeWriting
-  );
-  const dispatch = useDispatch();
   const { title, author, email, phone_number } = newWritingData;
 
   return (
-    <WritingResumeContainer
-      isUserLogin={isUserLogin}
-      displayWritingResume={displayWritingResume}
-      displayResumeManagement={displayResumeManagement}
-      displayWritingReducer={displayWritingReducer}
-    >
+    <WritingResumeContainer>
       <WritingBoundary
         onKeyUp={(e) => {
           handleResumeInput(e);

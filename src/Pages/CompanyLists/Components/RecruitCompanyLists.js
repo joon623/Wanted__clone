@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { companyAddress } from "../../../config";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { API } from '../../../config';
+import { useHistory } from 'react-router-dom';
 
 function RecruitCompanyLists({ filterValue, locationFilterAddress }) {
   const [changeValue, setChangeValue] = useState(false);
   const [recruitCompanydata, setRecruitCompanydata] = useState([]);
-  const [items, setItems] = useState(8);
-  const [preItems, setPreItems] = useState(0);
 
   useEffect(() => {
     fetch(locationFilterAddress)
@@ -18,13 +16,13 @@ function RecruitCompanyLists({ filterValue, locationFilterAddress }) {
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`${companyAddress}`)
+    fetch(`${API}/recruit/`)
       .then((response) => response.json())
       .then((response) => setRecruitCompanydata(response.data.recruit_list));
   }, []);
 
   const sortFliter = () => {
-    if (filterValue === "response") {
+    if (filterValue === 'response') {
       setRecruitCompanydata(
         recruitCompanydata.sort(function (a, b) {
           return b.response_rate - a.response_rate;
@@ -140,7 +138,7 @@ const ResponseRate = styled.div`
   font-weight: bolder;
   border: 1px solid #00aead;
   border-radius: 2px;
-  display: ${({ percent }) => (percent >= 95 ? "block" : "none")};
+  display: ${({ percent }) => (percent >= 95 ? 'block' : 'none')};
 `;
 
 const Location = styled.div`
@@ -155,9 +153,9 @@ const City = styled.span`
   font-size: 12px;
 `;
 
-const Area = styled(City.withComponent("span"))`
+const Area = styled(City.withComponent('span'))`
   :before {
-    content: "・";
+    content: '・';
   }
 `;
 

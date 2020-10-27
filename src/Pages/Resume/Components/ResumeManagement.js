@@ -1,35 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
 import { Background } from '../Resume';
-import { ResumeState } from '../../../Store/Actions/index';
 
 function ResumeManagement({
-  displayResumeManagement,
   resumeListData,
   delteResumeList,
-  displayWritingResume,
   handleNewResume,
 }) {
-  const isUserLogin = useSelector((store) => store.userLoggedReducer);
-  const managementReducer = useSelector(
-    (store) => store.displayResumeManagement
-  );
-  const displayWritingReducer = useSelector(
-    (store) => store.displayResumeWriting
-  );
-
-  const dispatch = useDispatch();
-
   return (
     <>
-      <Container
-        isUserLogin={isUserLogin}
-        displayResumeManagement={displayResumeManagement}
-        displayWritingResume={displayWritingResume}
-        managementReducer={managementReducer}
-        displayWritingReducer={displayWritingReducer}
-      >
+      <Container>
         <RecentDocBar>
           <p>최근 문서</p>
           <span>

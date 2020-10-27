@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function Career() {
   return (
     <Container>
       <span className="career">경력</span>
       <span className="Years">전체</span>
-      <i className="fas fa-angle-down"></i>
+      <i className="fas fa-angle-down" />
     </Container>
   );
 }

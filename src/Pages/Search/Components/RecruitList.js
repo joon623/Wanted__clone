@@ -11,7 +11,7 @@ function RecruitList() {
         <span>포지션</span> <span>{recruitData.length}</span>
       </RecruitTitle>
       <SearchedRecruitLists>
-        {recruitData.map((el, idx) => (
+        {recruitData.map((el) => (
           <SearchedRecruitList key={el.id}>
             <ListHeader>
               <img src={el.thumbnail_url} alt="recruitImg" />

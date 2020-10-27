@@ -1,26 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import ResumeManagement from './Components/ResumeManagement';
 import WritingResume from './Components/WritingResume';
 import ResumeIntro from './Components/ResumeIntro';
-import { ResumeAddress, ResumeDeleteAddress, API } from '../../config';
-import {
-  OpenResumeWriting,
-  CloseResumeManagement,
-  ExitLogin,
-  OpenResumeManagement,
-  CloseResumeWriting,
-  NeedLogin,
-  ManagingClickButton,
-  WritingtButtonClick,
-  ResumeState,
-} from '../../Store/Actions/index';
+import { API } from '../../config';
+import { ResumeState } from '../../Store/Actions/index';
 
 function Resume() {
-  const [displayResumeManagement, setDisplayResumeManagement] = useState(false);
-  const [displayWritingResume, setDisplayWritingResume] = useState(false);
   const isUserLogin = useSelector((store) => store.userLoggedReducer);
 
   const [resumeListData, setResumeListData] = useState([]);
@@ -43,7 +30,6 @@ function Resume() {
   const textareaElement = useRef(null);
 
   const dispatch = useDispatch();
-  const writingReducer = useSelector((store) => store.displayResumeWriting);
 
   const headerOffset = 40;
 
@@ -70,7 +56,7 @@ function Resume() {
 
   useEffect(() => {
     const localToken = localStorage.getItem('userToken');
-    fetch(`${ResumeAddress}`, {
+    fetch(`${API}/account/resumelist`, {
       headers: { Authorization: localToken },
     })
       .then((res) => res.json())
@@ -88,7 +74,7 @@ function Resume() {
       return el.id !== id;
     });
 
-    fetch(`${ResumeDeleteAddress}${id}`, {
+    fetch(`${API}/account/resumedelet/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: toDeleteToken,
@@ -191,34 +177,22 @@ function Resume() {
 
   return (
     <>
-      {resumestateReducer === 'intro' && !isUserLogin && (
-        <ResumeIntro
-          setDisplayResumeManagement={setDisplayResumeManagement}
-          displayResumeManagement={displayResumeManagement}
-          displayWritingResume={displayWritingResume}
-          setDisplayWritingResume={setDisplayWritingResume}
-        />
-      )}
+      {resumestateReducer === 'intro' && !isUserLogin && <ResumeIntro />}
       {resumestateReducer === 'writing' && isUserLogin && (
         <WritingResume
           writingValidation={writingValidation}
-          isEssentialInformation={isEssentialInformation}
           handleResumeInput={handleResumeInput}
+          isEssentialInformation={isEssentialInformation}
           titleElement={titleElement}
           authorElement={authorElement}
           emailElement={emailElement}
           phoneNumberElement={phoneNumberElement}
           textareaElement={textareaElement}
-          displayWritingResume={displayWritingResume}
-          displayResumeManagement={displayResumeManagement}
           newWritingData={newWritingData}
         />
       )}
       {resumestateReducer === 'management' && isUserLogin && (
         <ResumeManagement
-          displayResumeManagement={displayResumeManagement}
-          displayWritingResume={displayWritingResume}
-          resumeListData={resumeListData}
           delteResumeList={delteResumeList}
           handleWriteResume={handleWriteResume}
           handleNewResume={handleNewResume}
