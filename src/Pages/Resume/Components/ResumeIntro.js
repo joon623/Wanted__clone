@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { NeedLogin, ResumeState } from '../../../Store/Actions/index';
 
@@ -8,8 +8,10 @@ function ResumeIntro() {
 
   const handleWhichButton = (page) => {
     dispatch(NeedLogin());
-    dispatch(ResumeState(page));
+    isUserLogged && dispatch(ResumeState(page));
   };
+
+  const isUserLogged = useSelector((store) => store.userLoggedReducer);
 
   return (
     <Intro>

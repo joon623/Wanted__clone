@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { InformationLabel } from '../EmailCheck/EmailCheck';
 
 export default function SignUp({
-  floatSecondSingUp,
-  setFloatSecondSingUp,
   agreedChecked,
   selectAllCheckedBox,
   uploadUserInfo,
@@ -17,16 +15,17 @@ export default function SignUp({
   pwdReValidation,
   SignUpValidationButton,
   existPhoneNumber,
+  setSignUpModal,
 }) {
   return (
     <>
-      <SignUpModal floatSecondSingUp={floatSecondSingUp}>
+      <SignUpModal>
         <SecondModalHeader>
           <strong>회원 가입</strong>
           <SecondeExitButton>
             <i
               className="fas fa-times"
-              onClick={() => setFloatSecondSingUp(false)}
+              onClick={() => setSignUpModal('emailCheck')}
             />
           </SecondeExitButton>
         </SecondModalHeader>
@@ -115,18 +114,21 @@ export default function SignUp({
           </StartingSignUpBox>
         </SecondModalBody>
       </SignUpModal>
-      <SecondTranparentBackground floatSecondSingUp={floatSecondSingUp} />
+      <SecondTranparentBackground
+        onClick={() => {
+          setSignUpModal('');
+        }}
+      />
     </>
   );
 }
 
 const SignUpModal = styled.div`
-  width: 400px;
-  height: ${(props) => (props.floatSecondSingUp ? '604px' : '0px')};
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 400px;
   overflow-y: auto;
   border-radius: 5px;
   background-color: #fff;
@@ -137,6 +139,16 @@ const SignUpModal = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+`;
+
+const SecondTranparentBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 13;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const SecondModalHeader = styled.header`
@@ -227,16 +239,6 @@ const StartingSignUpBox = styled.button.attrs((props) => ({
   font-weight: bold;
   cursor: ${(props) =>
     props.agreedChecked.essentialChecked ? 'pointer' : 'not-allowed'};
-`;
-
-const SecondTranparentBackground = styled.div`
-  width: 100%;
-  height: ${({ floatSecondSingUp }) => (floatSecondSingUp ? '100%' : '0')};
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 13;
-  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const GraySpan = styled.span`

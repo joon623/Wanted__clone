@@ -5,13 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ExitLogin } from '../../../../Store/Actions/index';
 
 export default function EmailCheck({
-  floatSignUp,
-  setFloatSignUp,
   handleEmail,
   checkEmail,
   emailValidation,
   responseFail,
   responseKakao,
+  setSignUpModal,
 }) {
   const needLogin = useSelector((store) => store.needLoginReducer);
 
@@ -19,14 +18,14 @@ export default function EmailCheck({
 
   return (
     <>
-      <SignUpModal floatSignUp={floatSignUp} needLogin={needLogin}>
+      <SignUpModal needLogin={needLogin}>
         <SignUpHeader>
           <img src="/Images/Nav/cuted_text.png" alt="cutedLogo" />
           <ExitButton>
             <i
               className="fas fa-times"
               onClick={() => {
-                setFloatSignUp(false);
+                setSignUpModal('');
                 dispatch(ExitLogin());
               }}
             />
@@ -83,11 +82,9 @@ export default function EmailCheck({
           </PreventUserInfomation>
         </SignUpBody>
       </SignUpModal>
-      <TranparentBackground
-        floatSignUp={floatSignUp}
-        needLogin={needLogin}
+      <Wrapper
         onClick={() => {
-          setFloatSignUp(false);
+          setSignUpModal('');
           dispatch(ExitLogin());
         }}
       />
@@ -95,10 +92,18 @@ export default function EmailCheck({
   );
 }
 
+const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 13;
+`;
+
 const SignUpModal = styled.div`
   width: 400px;
-  height: ${({ floatSignUp, needLogin }) =>
-    floatSignUp || needLogin ? '604px' : '0'};
   position: fixed;
   top: 50%;
   left: 50%;
@@ -106,10 +111,10 @@ const SignUpModal = styled.div`
   overflow-y: auto;
   border-radius: 5px;
   background-color: #fff;
-  z-index: 14;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  z-index: 14;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -268,15 +273,4 @@ const PreventUserInfomation = styled.div`
     text-decoration: underline;
     color: #3336ff;
   }
-`;
-
-const TranparentBackground = styled.div`
-  width: 100%;
-  height: ${({ floatSignUp, needLogin }) =>
-    floatSignUp || needLogin ? '100%' : '0'};
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 13;
-  background-color: rgba(0, 0, 0, 0.4);
 `;
