@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { companyAddress } from "../../../config";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { API } from '../../../config';
 
 const moveSlideLength = 400;
 
@@ -9,7 +9,7 @@ function MainSlide() {
   const [x_axis, setX_axis] = useState(0);
 
   useEffect(() => {
-    fetch(`${companyAddress}`)
+    fetch(`${API}/recruit/`)
       .then((response) => response.json())
       .then((response) => setjobCategoryData(response.data.menu_list));
   }, []);
@@ -92,10 +92,10 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const PreButton = styled(Button.withComponent("button"))`
+const PreButton = styled(Button.withComponent('button'))`
   left: 10px;
   visibility: ${({ preVisibleNum, preButton }) =>
-    preVisibleNum === 0 ? (preButton = "hidden") : ""};
+    preVisibleNum === 0 ? (preButton = 'hidden') : ''};
   cursor: pointer;
 
   .leftArrow {
@@ -104,10 +104,10 @@ const PreButton = styled(Button.withComponent("button"))`
   }
 `;
 
-const NextButton = styled(Button.withComponent("button"))`
+const NextButton = styled(Button.withComponent('button'))`
   right: 10px;
   visibility: ${({ nextVisibleNum, nextButton }) =>
-    nextVisibleNum === -(moveSlideLength * 3) ? (nextButton = "hidden") : ""};
+    nextVisibleNum === -(moveSlideLength * 3) ? (nextButton = 'hidden') : ''};
 
   .rightArrow {
     font-size: 50px;

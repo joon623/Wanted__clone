@@ -2,22 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function SignIn({
-  floatSignInModal,
-  setFloatSignInModal,
   invalidPassword,
   handleSignInPassword,
   checkLogin,
+  setSignUpModal,
 }) {
   return (
     <>
-      <SignInModal floatSignInModal={floatSignInModal}>
+      <SignInModal>
         <SignInHeader>
           <strong>비밀번호 입력</strong>
           <SignInExitButton>
-            <i
-              className="fas fa-times"
-              onClick={() => setFloatSignInModal(false)}
-            />
+            <i className="fas fa-times" onClick={() => setSignUpModal('')} />
           </SignInExitButton>
         </SignInHeader>
         <SignInModalBody>
@@ -43,28 +39,30 @@ export default function SignIn({
           <InitializeText>비밀번호 초기화/변경</InitializeText>
         </SignInModalBody>
       </SignInModal>
-      <HideBackground floatSignInModal={floatSignInModal} />
+      <HideBackground onClick={() => setSignUpModal('')} />
     </>
   );
 }
 
 const SignInModal = styled.div`
   width: 400px;
-  height: ${({ floatSignInModal }) => (floatSignInModal ? '330px' : '0')};
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: auto;
   border-radius: 5px;
   z-index: 14;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   background-color: #fff;
+`;
+
+const HideBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 13;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const SignInHeader = styled.div`
@@ -125,16 +123,6 @@ const SignInInput = styled.input`
     border: 1px solid
       ${({ invalidPassword }) => (invalidPassword === false ? 'red ' : '#36f')};
   }
-`;
-
-const HideBackground = styled.div`
-  width: 100%;
-  height: ${({ floatSignInModal }) => (floatSignInModal ? '100%' : '0')};
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 13;
-  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const LoginButton = styled.button`

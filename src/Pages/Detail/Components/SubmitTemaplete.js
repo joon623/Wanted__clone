@@ -227,7 +227,6 @@ const SubmitInputForm = styled.div`
   align-items: center;
   width: 100%;
   height: 50px;
-  /* border-bottom: 1px solid #e1e2e3; */
   border-bottom: ${({ nameValid }) =>
     nameValid ? '1px solid #e1e2e3;' : '1px solid red'};
   margin-bottom: 5px;
@@ -245,7 +244,6 @@ const SubmitInputForm = styled.div`
     border: none;
     font-size: 15px;
     font-weight: 600;
-    /* border-bottom: 1px solid #e1e2e3; */
     border-bottom: 1px solid #e1e2e3;
     outline: none;
     &.red {

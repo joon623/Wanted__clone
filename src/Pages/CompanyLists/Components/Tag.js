@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function Tag() {
   return (
     <Container>
       <span className="tag">태그</span>
       <span className="grayColor">딱 맞는 기업찾기</span>
-      <i className="fas fa-angle-down"></i>
+      <i className="fas fa-angle-down" />
     </Container>
   );
 }

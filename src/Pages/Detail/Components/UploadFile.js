@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 export default function UploadFile({
   selectedFile,
-  // setSubmit,
-  // submit,
   currentColor,
   handleCheckValue,
   index,

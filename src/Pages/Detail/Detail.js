@@ -135,10 +135,10 @@ function Detail() {
           <ShareFooter shareToggle={shareToggle}>
             <span>링크 공유</span>
             <div>
-              <input value='http://cuted.co/MoBK5k' />
+              <input value="http://cuted.co/MoBK5k" />
               <CopyToClipboard text={url}>
                 <button onClick={() => setShareToggle(!shareToggle)}>
-                  <i className='fas fa-check'></i>
+                  <i className="fas fa-check"></i>
                 </button>
               </CopyToClipboard>
             </div>
@@ -179,7 +179,6 @@ function Detail() {
           handleMove={handleMove}
           handleValue={handleValue}
           handleValid={handleValid}
-          // nameValidHandler={nameValidHandler}
         />
       </Wrapper>
       <MapCompany detailList={detailList}></MapCompany>

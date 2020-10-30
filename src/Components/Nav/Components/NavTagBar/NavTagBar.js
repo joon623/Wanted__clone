@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,7 +9,7 @@ import {
   SearchedData,
   RecruitList,
 } from '../../../../Store/Actions/index';
-import { SearchAddress } from '../../../../config';
+import { API } from '../../../../config';
 
 export default function NavTagBar({
   displayRecommend,
@@ -29,7 +29,7 @@ export default function NavTagBar({
   const submitValue = async (e) => {
     e.preventDefault();
     dispatch(UserSearchInput(searchValue));
-    await fetch(`${SearchAddress}${searchValue}`)
+    await fetch(`${API}/recruit/search?keyword=${searchValue}`)
       .then((res) => res.json())
       .then((result) => {
         dispatch(SearchedData());
@@ -51,17 +51,17 @@ export default function NavTagBar({
         <TagContent>
           <SearchBar onSubmit={(e) => submitValue(e)}>
             <SubmitButton onClick={submitValue}>
-              <i className='fas fa-search' />
+              <i className="fas fa-search" />
             </SubmitButton>
             <SearchInput
-              placeholder='#태그, 회사, 포지션 검색'
+              placeholder="#태그, 회사, 포지션 검색"
               onChange={handleSearchInput}
             />
           </SearchBar>
           <RecommendTag>
             <RecommendText>
               <div>추천태그로 검색해보세요</div>
-              <Link to='/'>
+              <Link to="/">
                 <div>기업태그 홈</div>
               </Link>
             </RecommendText>
@@ -78,18 +78,17 @@ export default function NavTagBar({
 }
 
 const TagNavigation = styled.div`
-  display: ${(props) => (props.displayRecommend ? 'block' : 'none')};
-  position: absolute;
+  display: ${({ displayRecommend }) => (displayRecommend ? 'block' : 'none')};
+  position: fixed;
   top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  width: 100%;
-  height: 200vh;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 11;
 `;
 
 const TagContainer = styled.div`
-  width: 100%;
   margin: 0 auto;
   padding-top: 5px;
   background-color: white;
@@ -137,7 +136,6 @@ const SearchInput = styled.input`
 `;
 
 const RecommendTag = styled.div`
-  width: 100%;
   margin-top: 40px;
 `;
 
@@ -168,8 +166,8 @@ const RecommendedTag = styled.ul`
 `;
 
 const RecommendList = styled.li`
-  height: 50px;
   display: inline-block;
+  height: 50px;
   line-height: 50px;
   margin-right: 15px;
   margin-bottom: 35px;

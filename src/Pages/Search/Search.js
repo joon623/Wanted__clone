@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import RecruitList from './Components/RecruitList';
-import Nav from '../../Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 
 function Search() {
@@ -11,7 +10,6 @@ function Search() {
   return (
     <>
       <BackgroundDiv />
-      <Nav />
       <SearchContainer>
         <InputValue>
           {UserInputValue ? UserInputValue : '검색어를 입력하세요'}
@@ -27,7 +25,7 @@ function Search() {
             {searchedData?.map((el) => (
               <CompanyCard key={el.id}>
                 <ImgWrapper>
-                  <img src={el.imgSrc} alt='CompanyImg' />
+                  <img src={el.imgSrc} alt="CompanyImg" />
                   <TitleWrapper>
                     <CompanyName>{el.name}</CompanyName>
                     <CompanyCategory>{el.category}</CompanyCategory>

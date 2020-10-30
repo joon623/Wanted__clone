@@ -11,21 +11,18 @@ import UserSelectBox from './Components/UserSelectBox/UserSelectBox';
 import { NAVIGATION_MENU_Tab } from './Data/NAVIGATION_MENU_TAB';
 import { NAVIGATION_ASIDE } from './Data/NAVIGATION_ASIDE';
 import { EXPLORE_CONTENT } from './Data/EXPLORE_CONTENT';
-import { SignUpAddress } from '../../config';
+import { API } from '../../config';
 import {
   UserLogin,
   UserLogOut,
-  NeedLogin,
   ExitLogin,
   ResumeState,
 } from '../../Store/Actions';
 
 function Nav() {
+  const [signUpModal, setSignUpModal] = useState('');
   const [displayExplore, setDisplayExplore] = useState(false);
   const [displayRecommend, setDisplayRecommend] = useState(false);
-  const [floatSignUp, setFloatSignUp] = useState(false);
-  const [floatSecondSingUp, setFloatSecondSingUp] = useState(false);
-  const [floatSignInModal, setFloatSignInModal] = useState(false);
   const [emailValidation, setEmailValidation] = useState(true);
   const [agreedChecked, setAgreedChecked] = useState({
     entireChecked: false,
@@ -54,10 +51,9 @@ function Nav() {
   const history = useHistory();
   const SignUpValidationButton = useRef(null);
 
-  const [userLogged, setUserLogged] = useState(false);
   const dispatch = useDispatch();
   const isUserLogin = useSelector((store) => store.userLoggedReducer);
-  const UserclickedButton = useSelector((store) => store.clickedButton);
+  const userNeedLogin = useSelector((store) => store.needLoginReducer);
 
   const handleExplore = (idx) => {
     idx === 0 ? setDisplayExplore(true) : setDisplayExplore(false);
@@ -80,7 +76,7 @@ function Nav() {
       return setEmailValidation(false);
     }
 
-    await fetch(`${SignUpAddress}`, {
+    await fetch(`${API}/account/emailcheck`, {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -89,15 +85,11 @@ function Nav() {
       .then((res) => res.json())
       .then((result) => {
         if (result.message === 'ALEADY_EXISTS') {
-          setFloatSignUp(false);
+          setSignUpModal('signIn');
           dispatch(ExitLogin());
-          setFloatSecondSingUp(false);
-          setFloatSignInModal(true);
         } else if (result.message === 'NEED_SIGNUP') {
-          setFloatSignUp(false);
+          setSignUpModal('signUp');
           dispatch(ExitLogin());
-          setFloatSecondSingUp(true);
-          setFloatSignInModal(false);
         }
       });
   };
@@ -166,7 +158,7 @@ function Nav() {
     setSingnUpValidation(pwdCheckValid);
 
     SignUpValidationButton.current.addEventListener('click', async () => {
-      await fetch(`${SignUpAddress}/signup`, {
+      await fetch(`${API}/account/emailcheck/signup`, {
         method: 'POST',
         body: JSON.stringify({
           email,
@@ -178,7 +170,7 @@ function Nav() {
         .then((res) => res.json())
         .then((result) => {
           if (result.message === 'SUCCESS') {
-            setFloatSecondSingUp(false);
+            setSignUpModal('');
             dispatch(UserLogin());
             pwdCheckValid && history.push('/');
           } else if (result.message === 'ALREADY_EXISTS_PHONE_NUMBER') {
@@ -195,7 +187,7 @@ function Nav() {
   };
 
   const checkLogin = async () => {
-    await fetch(`${SignUpAddress}/signin`, {
+    await fetch(`${API}/account/emailcheck/signin`, {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -206,7 +198,7 @@ function Nav() {
       .then((result) => {
         if (result.ACCESS_TOKEN) {
           localStorage.setItem('userToken', result.ACCESS_TOKEN);
-          setFloatSignInModal(false);
+          setSignUpModal('');
           dispatch(UserLogin());
         } else if (result.message === 'INVALID_PASSWORD') {
           setInvalidPassword(false);
@@ -216,7 +208,7 @@ function Nav() {
 
   const responseKakao = (res) => {
     if (res.response.access_token) {
-      fetch(`${SignUpAddress}/kakaosignin`, {
+      fetch(`${API}/account/emailcheck/kakaosignin`, {
         method: 'POST',
         headers: {
           Authorization: res.response.access_token,
@@ -226,7 +218,7 @@ function Nav() {
         .then((result) => {
           if (result.token) {
             localStorage.setItem('kakaoToken', result.token);
-            setFloatSignUp(false);
+            setSignUpModal('');
             dispatch(ExitLogin());
             dispatch(UserLogin());
           }
@@ -245,7 +237,7 @@ function Nav() {
   };
 
   useEffect(() => {
-    localStorage.getItem('userToken') && dispatch(dispatch(UserLogin()));
+    localStorage.getItem('userToken') && dispatch(UserLogin());
   }, []);
 
   return (
@@ -323,7 +315,7 @@ function Nav() {
                   <li
                     key={idx}
                     onClick={() => {
-                      idx === 0 && setFloatSignUp(true);
+                      idx === 0 && setSignUpModal('emailCheck');
                     }}
                   >
                     {el}
@@ -355,40 +347,43 @@ function Nav() {
         setDisplayRecommend={setDisplayRecommend}
       />
       <HideMain displayExplore={displayExplore} />
-      <EmailCheck
-        floatSignUp={floatSignUp}
-        setFloatSignUp={setFloatSignUp}
-        handleEmail={handleEmail}
-        checkEmail={checkEmail}
-        emailValidation={emailValidation}
-        kakaoData={kakaoData}
-        responseKakao={responseKakao}
-        responseFail={responseFail}
-      />
-      <SignUp
-        floatSecondSingUp={floatSecondSingUp}
-        setFloatSecondSingUp={setFloatSecondSingUp}
-        agreedChecked={agreedChecked}
-        selectAllCheckedBox={selectAllCheckedBox}
-        uploadUserInfo={uploadUserInfo}
-        input={input}
-        selectEssentialCheckBox={selectEssentialCheckBox}
-        selectOptionalCheckBox={selectOptionalCheckBox}
-        checkValidation={checkValidation}
-        idValidation={idValidation}
-        phoneValidation={phoneValidation}
-        pwdValidation={pwdValidation}
-        pwdReValidation={pwdReValidation}
-        SignUpValidationButton={SignUpValidationButton}
-        existPhoneNumber={existPhoneNumber}
-      />
-      <SignIn
-        floatSignInModal={floatSignInModal}
-        setFloatSignInModal={setFloatSignInModal}
-        invalidPassword={invalidPassword}
-        handleSignInPassword={handleSignInPassword}
-        checkLogin={checkLogin}
-      />
+      {(signUpModal === 'emailCheck' || userNeedLogin) && (
+        <EmailCheck
+          handleEmail={handleEmail}
+          checkEmail={checkEmail}
+          responseKakao={responseKakao}
+          responseFail={responseFail}
+          setSignUpModal={setSignUpModal}
+          emailValidation={emailValidation}
+          kakaoData={kakaoData}
+        />
+      )}
+      {signUpModal === 'signUp' && (
+        <SignUp
+          selectAllCheckedBox={selectAllCheckedBox}
+          uploadUserInfo={uploadUserInfo}
+          selectEssentialCheckBox={selectEssentialCheckBox}
+          selectOptionalCheckBox={selectOptionalCheckBox}
+          checkValidation={checkValidation}
+          setSignUpModal={setSignUpModal}
+          agreedChecked={agreedChecked}
+          input={input}
+          idValidation={idValidation}
+          phoneValidation={phoneValidation}
+          pwdValidation={pwdValidation}
+          pwdReValidation={pwdReValidation}
+          SignUpValidationButton={SignUpValidationButton}
+          existPhoneNumber={existPhoneNumber}
+        />
+      )}
+      {signUpModal === 'signIn' && (
+        <SignIn
+          handleSignInPassword={handleSignInPassword}
+          checkLogin={checkLogin}
+          setSignUpModal={setSignUpModal}
+          invalidPassword={invalidPassword}
+        />
+      )}
     </>
   );
 }
@@ -401,8 +396,8 @@ const Navigation = styled.nav`
   font-size: 14px;
   font-weight: bold;
   background-color: white;
-  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   color: #333333;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   z-index: 10;
 `;
 

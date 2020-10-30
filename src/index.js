@@ -11,13 +11,11 @@ import rootReducer from './Store/Reducers';
 const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
-  <>
-    <Provider store={store}>
-      <ThemeProvider theme={{ ...theme }}>
-        <Routes />
-        <GlobalStyles />
-      </ThemeProvider>
-    </Provider>
-  </>,
+  <Provider store={store}>
+    <ThemeProvider theme={{ ...theme }}>
+      <Routes />
+      <GlobalStyles />
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );

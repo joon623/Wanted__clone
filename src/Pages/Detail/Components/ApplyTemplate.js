@@ -151,7 +151,6 @@ const ApplyTemplateText = styled.div`
   color: #333;
   i {
     font-size: 25px;
-    /* color: #36f; */
     color: ${(props) => (props.shareToggle ? 'lightgray' : '#36f')};
     cursor: pointer;
   }
